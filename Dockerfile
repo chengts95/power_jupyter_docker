@@ -9,5 +9,6 @@ FROM jupyter/jupyterhub:latest
 
 MAINTAINER cts <chengts95@163.com>
 RUN echo "root:123456" | chpasswd 
+USER root
 ADD jupyterhub_config.py /srv/jupyterhub/
 CMD ["jupyterhub", "-f", "/srv/jupyterhub/jupyterhub_config.py"]
