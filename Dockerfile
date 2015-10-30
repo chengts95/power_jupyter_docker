@@ -13,5 +13,4 @@ RUN chmod 777 /etc/sudoers
 RUN echo "cts ALL=(ALL) ALL">/etc/sudoers
 RUN chmod 440 /etc/sudoers
 ADD jupyterhub_config.py /srv/jupyterhub/
-USER cts
-CMD ["sudo jupyterhub", "-f", "/srv/jupyterhub/jupyterhub_config.py"]
+CMD ["jupyterhub", "-f", "/srv/jupyterhub/jupyterhub_config.py"]
