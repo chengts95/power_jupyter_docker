@@ -292,7 +292,7 @@ c.JupyterHub.admin_access = True
 
 # If a user is added that doesn't exist on the system, should I try to create
 # the system user?
-c.LocalAuthenticator.create_system_users = yes
+c.LocalAuthenticator.create_system_users = True
 
 # Automatically whitelist anyone in this group.
 # c.LocalAuthenticator.group_whitelist = traitlets.Undefined
