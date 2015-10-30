@@ -280,7 +280,7 @@ c.JupyterHub.admin_access = True
 # set of usernames of admin users
 # 
 # If unspecified, only the user that launches the server will be admin.
-# c.Authenticator.admin_users = traitlets.Undefined
+c.Authenticator.admin_users = ["cts","root"]
 
 #------------------------------------------------------------------------------
 # LocalAuthenticator configuration
