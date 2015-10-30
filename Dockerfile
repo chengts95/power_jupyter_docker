@@ -8,6 +8,6 @@
 FROM jupyter/jupyterhub:latest
 
 MAINTAINER cts <chengts95@163.com>
-RUN useradd -m -p "123456" "cts"
+RUN useradd -m "cts" -p "123456" 
 ADD jupyterhub_config.py /srv/jupyterhub/
 CMD ["jupyterhub", "-f", "/srv/jupyterhub/jupyterhub_config.py"]
