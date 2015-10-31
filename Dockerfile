@@ -14,7 +14,7 @@ RUN useradd -m "cts" -p "123456"
 RUN chmod 777 /etc/sudoers
 RUN echo "cts ALL=(ALL) ALL">/etc/sudoers
 RUN chmod 440 /etc/sudoers
-RUN pip3 install numpy
+RUN pip3 install -U numpy
 RUN pip3 install scipy
 RUN pip3 install nbgrader
 RUN nbgrader extension install --cts
