@@ -1,0 +1,6 @@
+test2:
+  image: daocloud.io/chengts95/jupytertest:master-131f366
+  restart: always
+  ports:
+  - '8000'
+  - '8888'
