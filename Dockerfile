@@ -6,10 +6,12 @@
 #
 
 FROM jupyter/jupyterhub:latest
+MAINTAINER cts <chengts95@163.com>
 RUN apt-get update
 RUN apt-get upgrade -y
 RUN apt-get install python3-matplotlib -y
-MAINTAINER cts <chengts95@163.com>
+RUN apt-get install libatlas-sse2-dev -y
+RUN apt-get install gfortran -y
 RUN useradd -m "cts" -p "123456" 
 RUN chmod 777 /etc/sudoers
 RUN echo "cts ALL=(ALL) ALL">/etc/sudoers
