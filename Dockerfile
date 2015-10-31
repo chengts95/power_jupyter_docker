@@ -13,6 +13,9 @@ RUN mkdir assigns
 WORKDIR /home/cts/assigns
 RUN mkdir source  release  submitted  autograded  feedback
 USER root
+RUN apt-get install openssh-server -y
+EXPOSE 22
+RUN service ssh start
 RUN nbgrader extension install
 RUN mkdir /srv/nbgrader
 RUN mkdir /srv/nbgrader/exchange
