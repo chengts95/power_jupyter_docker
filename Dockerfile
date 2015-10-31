@@ -2,29 +2,20 @@
 #
 # Build your own derivative images starting with
 #
-# FROM jupyter/jupyterhub:latest
+# FROM daocloud.io/chengts95/jupytertest:latest
 #
 
-FROM jupyter/jupyterhub:latest
+FROM daocloud.io/chengts95/jupytertest:latest
 MAINTAINER cts <chengts95@163.com>
-RUN apt-get update
-RUN apt-get upgrade -y
-
-RUN apt-get install python3-matplotlib -y
-RUN apt-get build-dep python3-scipy -y
-RUN useradd -m "cts" -p "123456" 
-
-RUN pip3 install -U numpy
-RUN pip3 install scipy
-RUN pip3 install nbgrader
-RUN pip3 install ipyparallel
-
-RUN chmod 777 /etc/sudoers
-RUN echo "cts ALL=(ALL) ALL">/etc/sudoers
-RUN chmod 440 /etc/sudoers
-RUN echo "cts:123456" | chpasswd
 USER cts
-RUN nbgrader extension install --user
+RUN nbgrader extension install
+WORKDIR /home/cts
+RUN mkdir assigns
+WORKDIR /home/cts/assigns
+RUN mkdir source  release  submitted  autograded  feedback
 USER root
+RUN mkdir /srv/nbgrader
+RUN mkdir /srv/nbgrader/exchange
+RUN chmod -R 777 /srv/nbgrader
 ADD jupyterhub_config.py /srv/jupyterhub/
 CMD ["jupyterhub", "-f", "/srv/jupyterhub/jupyterhub_config.py"]
