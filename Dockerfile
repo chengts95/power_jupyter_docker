@@ -6,14 +6,15 @@
 #
 
 FROM jupyter/jupyterhub:latest
-
+RUN apt-get update
+RUN apt-get upgrade -y
+RUN apt-get install python3-matplotlib -y
 MAINTAINER cts <chengts95@163.com>
 RUN useradd -m "cts" -p "123456" 
 RUN chmod 777 /etc/sudoers
 RUN echo "cts ALL=(ALL) ALL">/etc/sudoers
 RUN chmod 440 /etc/sudoers
 RUN pip3 install numpy
-RUN pip3 install matplotlib
 RUN pip3 install scipy
 RUN pip3 install nbgrader
 RUN nbgrader extension install --cts
