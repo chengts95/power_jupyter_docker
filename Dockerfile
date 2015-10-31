@@ -25,7 +25,6 @@ RUN chmod 440 /etc/sudoers
 RUN echo "cts:123456" | chpasswd
 USER cts
 RUN nbgrader extension install --user
-RUN nbgrader extension activate
 USER root
 ADD jupyterhub_config.py /srv/jupyterhub/
 CMD ["jupyterhub", "-f", "/srv/jupyterhub/jupyterhub_config.py"]
