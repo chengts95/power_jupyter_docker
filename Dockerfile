@@ -5,7 +5,7 @@
 # FROM daocloud.io/chengts95/jupytertest:latest
 #
 
-FROM daocloud.io/chengts95/jupytertest:latest
+FROM daocloud.io/chengts95/jupytertest:master-e48abe4
 MAINTAINER cts <chengts95@163.com>
 USER cts
 RUN nbgrader extension install
