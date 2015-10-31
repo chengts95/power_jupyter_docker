@@ -51,7 +51,7 @@
 #   where `handler` is the calling web.RequestHandler,
 #   and `data` is the POST form data from the login page.
 # c.JupyterHub.authenticator_class = <class 'jupyterhub.auth.PAMAuthenticator'>
-c.JupyterHub.authenticator_class = <class 'oauthenticator.LocalGitHubOAuthenticator'>
+c.JupyterHub.authenticator_class = 'oauthenticator.GitHubOAuthenticator'
 # log all database transactions. This has A LOT of output
 # c.JupyterHub.debug_db = False
 
