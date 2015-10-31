@@ -51,7 +51,6 @@
 #   where `handler` is the calling web.RequestHandler,
 #   and `data` is the POST form data from the login page.
 # c.JupyterHub.authenticator_class = <class 'jupyterhub.auth.PAMAuthenticator'>
-c.JupyterHub.authenticator_class = 'oauthenticator.GitHubOAuthenticator'
 # log all database transactions. This has A LOT of output
 # c.JupyterHub.debug_db = False
 
@@ -308,6 +307,3 @@ c.LocalAuthenticator.create_system_users = True
 
 # The encoding to use for PAM
 # c.PAMAuthenticator.encoding = 'utf8'
-c.GitHubOAuthenticator.oauth_callback_url = "http://chengts95myjupyterhub.daoapp.io/hub/oauth_callback"
-c.GitHubOAuthenticator.client_id ="27185d2f047afba3bde4"
-c.GitHubOAuthenticator.client_secret ="4df09fdae61ab7e726d0e83c82f66691202be7f7"
