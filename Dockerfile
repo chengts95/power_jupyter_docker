@@ -8,12 +8,12 @@
 FROM daocloud.io/chengts95/jupytertest:master-e48abe4
 MAINTAINER cts <chengts95@163.com>
 USER cts
-RUN nbgrader extension install
 WORKDIR /home/cts
 RUN mkdir assigns
 WORKDIR /home/cts/assigns
 RUN mkdir source  release  submitted  autograded  feedback
 USER root
+RUN nbgrader extension install
 RUN mkdir /srv/nbgrader
 RUN mkdir /srv/nbgrader/exchange
 RUN chmod -R 777 /srv/nbgrader
