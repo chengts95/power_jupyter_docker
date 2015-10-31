@@ -17,5 +17,6 @@ RUN nbgrader extension install
 RUN mkdir /srv/nbgrader
 RUN mkdir /srv/nbgrader/exchange
 RUN chmod -R 777 /srv/nbgrader
+WORKDIR /srv/jupyterhub/
 ADD jupyterhub_config.py /srv/jupyterhub/
 CMD ["jupyterhub", "-f", "/srv/jupyterhub/jupyterhub_config.py"]
