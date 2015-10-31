@@ -12,6 +12,13 @@ RUN useradd -m "cts" -p "123456"
 RUN chmod 777 /etc/sudoers
 RUN echo "cts ALL=(ALL) ALL">/etc/sudoers
 RUN chmod 440 /etc/sudoers
+RUN pip3 install numpy
+RUN pip3 install matplotlib
+RUN pip3 install scipy
+RUN pip3 install nbgrader
+RUN nbgrader extension install --cts
+RUN nbgrader extension activate
+RUN pip3 install ipyparallel
 RUN echo "cts:123456" | chpasswd
 ADD jupyterhub_config.py /srv/jupyterhub/
 CMD ["jupyterhub", "-f", "/srv/jupyterhub/jupyterhub_config.py"]
