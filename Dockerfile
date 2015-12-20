@@ -5,8 +5,8 @@ MAINTAINER cts <chengts95@163.com>
 # install a few other useful packages plus Open Jdk 7
 # Remove unneeded /var/lib/apt/lists/* after install to reduce the
 # docker image size (by ~30MB)
-
-RUN sudo add-apt-repository ppa:webupd8team/java &&\
+USER root
+RUN add-apt-repository ppa:webupd8team/java &&\
     apt-key adv --keyserver keyserver.ubuntu.com --recv-keys C2518248EEA14886 && \
     echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu/ precise main" > /etc/apt/sources.list.d/java.list && \
     echo "debconf shared/accepted-oracle-license-v1-1 select true" | debconf-set-selections && \
