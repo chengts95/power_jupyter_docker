@@ -1,24 +1,19 @@
-# A base docker image that includes juptyerhub and IPython master
-#
-# Build your own derivative images starting with
-#
-# FROM jupyter/jupyterhub:latest
-#
 
-FROM jupyter/jupyterhub:latest
+
+FROM ubuntu:16.04
 
 MAINTAINER cts <chengts95@163.com>
-RUN useradd -m "cts" -p "123456" 
-RUN chmod 777 /etc/sudoers
-RUN echo "cts ALL=(ALL) ALL">/etc/sudoers
-RUN chmod 440 /etc/sudoers
-RUN pip3 install numpy
-RUN pip3 install matplotlib
-RUN pip3 install scipy
-RUN pip3 install nbgrader
-RUN nbgrader extension install --cts
-RUN nbgrader extension activate
-RUN pip3 install ipyparallel
-RUN echo "cts:123456" | chpasswd
-ADD jupyterhub_config.py /srv/jupyterhub/
-CMD ["jupyterhub", "-f", "/srv/jupyterhub/jupyterhub_config.py"]
+# Upgrade package index
+# install a few other useful packages plus Open Jdk 7
+# Remove unneeded /var/lib/apt/lists/* after install to reduce the
+# docker image size (by ~30MB)
+
+RUN sudo add-apt-repository ppa:webupd8team/java &&\
+    apt-key adv --keyserver keyserver.ubuntu.com --recv-keys C2518248EEA14886 && \
+    echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu/ precise main" > /etc/apt/sources.list.d/java.list && \
+    echo "debconf shared/accepted-oracle-license-v1-1 select true" | debconf-set-selections && \
+    echo "debconf shared/accepted-oracle-license-v1-1 seen true" | debconf-set-selections && \
+    apt-get update && \
+    apt-get install -y less net-tools vim-tiny sudo openssh-server oracle-java8-installer&& \
+    rm -rf /var/lib/apt/lists/*
+
