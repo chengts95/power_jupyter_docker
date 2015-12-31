@@ -12,6 +12,6 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys C2518248EEA14886 &&
     echo "debconf shared/accepted-oracle-license-v1-1 seen true" | debconf-set-selections && \
     apt-get update && \
     apt-get install -y less net-tools vim-tiny sudo openssh-server oracle-java8-installer&& \
-    rm -rf /var/lib/apt/lists/*
+    
 RUN apt-get install -y python3 npm nodejs && \
     rm -rf /var/lib/apt/lists/*
