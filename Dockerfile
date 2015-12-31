@@ -13,5 +13,5 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys C2518248EEA14886 &&
     apt-get update && \
     apt-get install -y less net-tools vim-tiny sudo openssh-server oracle-java8-installer
 
-RUN apt-get install -y python3 npm nodejs && \
+RUN apt-get install -y python3-pip npm nodejs && \
     rm -rf /var/lib/apt/lists/*
