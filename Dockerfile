@@ -11,7 +11,9 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys C2518248EEA14886 &&
     echo "debconf shared/accepted-oracle-license-v1-1 select true" | debconf-set-selections && \
     echo "debconf shared/accepted-oracle-license-v1-1 seen true" | debconf-set-selections && \
     apt-get update && \
-    apt-get install -y less net-tools vim-tiny sudo openssh-server oracle-java8-installer
+    apt-get install -y build-essential less net-tools vim-tiny sudo openssh-server oracle-java8-installer
 
-RUN apt-get install -y python3-pip npm nodejs && \
+RUN apt-get install -y python3-pip && \
+    curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash - && \
+    apt-get install -y nodejs && \
     rm -rf /var/lib/apt/lists/*
