@@ -17,7 +17,7 @@ RUN apt-get install -y python3-pip && \
     curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash - && \
     apt-get install -y nodejs npm && \
     rm -rf /var/lib/apt/lists/*
-RUN pip3 install tornado jupyterhub && \
+RUN pip3 install tornado jupyter jupyterhub && \
     npm install -g configurable-http-proxy
 RUN useradd -m "cts" -p "123456" && \
     chmod 777 /etc/sudoers && \
@@ -28,4 +28,5 @@ RUN useradd -m "cts" -p "123456" && \
 ADD jupyterhub_config.py /home/cts/jupyterhub/
 WORKDIR /home/cts/jupyterhub/
 EXPOSE 8000
+EXPOSE 8080
 CMD ["jupyterhub", "-f", "/home/cts/jupyterhub/jupyterhub_config.py"]
