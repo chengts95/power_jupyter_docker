@@ -28,5 +28,5 @@ RUN useradd -m "cts" -p "123456" && \
 ADD jupyterhub_config.py /home/cts/jupyterhub/
 WORKDIR /home/cts/jupyterhub/
 EXPOSE 8000
-EXPOSE 8080
+EXPOSE 8888
 CMD ["jupyterhub", "-f", "/home/cts/jupyterhub/jupyterhub_config.py"]
