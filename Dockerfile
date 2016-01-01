@@ -15,7 +15,7 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys C2518248EEA14886 &&
 
 RUN apt-get install -y python3-pip && \
     curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash - && \
-    apt-get install -y nodejs npm && \
+    apt-get install -y nodejs-legacy npm && \
     rm -rf /var/lib/apt/lists/*
 RUN pip3 install tornado jupyter jupyterhub && \
     npm install -g configurable-http-proxy
