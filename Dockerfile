@@ -17,6 +17,7 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys C2518248EEA14886 &&
     apt-get install -y nodejs-legacy npm && \
     apt-get autoclean -y && \
     rm -rf /var/lib/apt/lists/*
+    
 RUN pip3 install tornado jupyter jupyterhub && \
     npm install -g configurable-http-proxy
 RUN useradd -m "cts" -p "123456" && \
