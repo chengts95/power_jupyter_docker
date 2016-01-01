@@ -11,11 +11,11 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys C2518248EEA14886 &&
     echo "debconf shared/accepted-oracle-license-v1-1 select true" | debconf-set-selections && \
     echo "debconf shared/accepted-oracle-license-v1-1 seen true" | debconf-set-selections && \
     apt-get update && \
-    apt-get install -y build-essential less net-tools vim-tiny sudo openssh-server oracle-java8-installer
-
-RUN apt-get install -y python3-pip && \
+    apt-get install -y build-essential less net-tools vim-tiny sudo openssh-server oracle-java8-installer && \
+    apt-get install -y python3-pip && \
     curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash - && \
-    apt-get install -y nodejs npm && \
+    apt-get install -y nodejs-legacy npm && \
+    apt-get autoclean -y && \
     rm -rf /var/lib/apt/lists/*
 RUN pip3 install tornado jupyter jupyterhub && \
     npm install -g configurable-http-proxy
@@ -23,6 +23,7 @@ RUN useradd -m "cts" -p "123456" && \
     chmod 777 /etc/sudoers && \
     echo "cts ALL=(ALL) ALL">/etc/sudoers && \
     chmod 440 /etc/sudoers && \
+    echo "cts:123456" | chpasswd && \
     mkdir /home/cts/jupyterhub
 
 ADD jupyterhub_config.py /home/cts/jupyterhub/
