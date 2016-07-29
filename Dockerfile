@@ -32,4 +32,4 @@ ADD jupyterhub_config.py /home/cts/jupyterhub/
 WORKDIR /home/cts/jupyterhub/
 EXPOSE 8000
 EXPOSE 8888
-CMD ["jupyterhub", "-f", "/home/cts/jupyterhub/jupyterhub_config.py"]
+CMD ["jupyterhub", "-f","--no-ssl", "/home/cts/jupyterhub/jupyterhub_config.py"]
