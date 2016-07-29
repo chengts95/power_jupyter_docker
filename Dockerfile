@@ -19,7 +19,8 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys C2518248EEA14886 &&
     rm -rf /var/lib/apt/lists/*
     
 RUN pip3 install tornado jupyter jupyterhub && \
-    npm install -g configurable-http-proxy
+    npm install -g configurable-http-proxy && \
+    pip3 install numpy scipy ipyparallel matplotlib && \
 RUN useradd -m "cts" -p "123456" && \
     chmod 777 /etc/sudoers && \
     echo "cts ALL=(ALL) ALL">/etc/sudoers && \
