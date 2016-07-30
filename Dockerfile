@@ -21,12 +21,14 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys C2518248EEA14886 &&
 RUN pip3 install tornado jupyter jupyterhub && \
     npm install -g configurable-http-proxy && \
     pip3 install numpy scipy ipyparallel matplotlib
+    
 RUN useradd -m "cts" -p "123456" && \
     chmod 777 /etc/sudoers && \
     echo "cts ALL=(ALL) ALL">/etc/sudoers && \
     chmod 440 /etc/sudoers && \
     echo "cts:123456" | chpasswd && \
-    mkdir /home/cts/jupyterhub
+    mkdir /home/cts/jupyterhub && \
+    ipcluster nbextension enable
 
 ADD jupyterhub_config.py /home/cts/jupyterhub/
 WORKDIR /home/cts/jupyterhub/
