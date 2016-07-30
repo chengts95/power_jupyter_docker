@@ -2,7 +2,7 @@ FROM ubuntu:16.04
 
 MAINTAINER cts <chengts95@163.com>
 # Upgrade package index
-# install a few other useful packages plus Oracle Jdk 8
+# install a few other useful packages plus Oracle Jdk 8 and jupyterhub
 # Remove unneeded /var/lib/apt/lists/* after install to reduce the
 # docker image size (by ~30MB)
 USER root
@@ -26,10 +26,11 @@ RUN useradd -m "cts" -p "123456" && \
     echo "cts ALL=(ALL) ALL">/etc/sudoers && \
     chmod 440 /etc/sudoers && \
     echo "cts:123456" | chpasswd && \
-    mkdir /home/cts/jupyterhub
+    mkdir /home/cts/jupyterhub && \
+	ipcluster nbextension enable
 
 ADD jupyterhub_config.py /home/cts/jupyterhub/
 WORKDIR /home/cts/jupyterhub/
 EXPOSE 8000
 EXPOSE 8888
-CMD ["jupyterhub", "-f","--no-ssl", "/home/cts/jupyterhub/jupyterhub_config.py"]
+CMD ["jupyterhub","--no-ssl", "-f","/home/cts/jupyterhub/jupyterhub_config.py"]
