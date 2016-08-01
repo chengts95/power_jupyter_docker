@@ -30,8 +30,8 @@ RUN useradd -m "cts" -p "123456" && \
     mkdir /home/cts/jupyterhub
 
 ADD jupyterhub_config.py /home/cts/jupyterhub/
-USER cts
-RUN gosu ipcluster nbextension enable
+
+RUN ipcluster nbextension enable
 
 WORKDIR /home/cts/jupyterhub/
 EXPOSE 8000
