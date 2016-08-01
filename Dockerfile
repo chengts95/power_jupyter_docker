@@ -37,4 +37,4 @@ WORKDIR /home/cts/jupyterhub/
 EXPOSE 8000
 EXPOSE 8888
 ENTRYPOINT ["jupyterhub"]
-CMD["--no-ssl", "-f","/home/cts/jupyterhub/jupyterhub_config.py"]
+CMD ["--no-ssl", "-f","/home/cts/jupyterhub/jupyterhub_config.py"]
