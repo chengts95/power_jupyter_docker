@@ -36,4 +36,5 @@ RUN ipcluster nbextension enable
 WORKDIR /home/cts/jupyterhub/
 EXPOSE 8000
 EXPOSE 8888
-CMD ["jupyterhub","--no-ssl", "-f","/home/cts/jupyterhub/jupyterhub_config.py"]
+ENTRYPOINT ["jupyterhub"]
+CMD["--no-ssl", "-f","/home/cts/jupyterhub/jupyterhub_config.py"]
