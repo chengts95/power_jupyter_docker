@@ -27,10 +27,12 @@ RUN useradd -m "cts" -p "123456" && \
     echo "cts ALL=(ALL) ALL">/etc/sudoers && \
     chmod 440 /etc/sudoers && \
     echo "cts:123456" | chpasswd && \
-    mkdir /home/cts/jupyterhub && \
-    ipcluster nbextension enable
+    mkdir /home/cts/jupyterhub
 
 ADD jupyterhub_config.py /home/cts/jupyterhub/
+USER cts
+RUN ipcluster nbextension enable
+USER root
 WORKDIR /home/cts/jupyterhub/
 EXPOSE 8000
 EXPOSE 8888
