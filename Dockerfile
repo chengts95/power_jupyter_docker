@@ -33,6 +33,13 @@ ADD jupyterhub_config.py /home/cts/jupyterhub/
 
 RUN ipcluster nbextension enable
 
+RUN locale-gen zh_CN.UTF-8 &&\
+  DEBIAN_FRONTEND=noninteractive dpkg-reconfigure locales
+RUN locale-gen zh_CN.UTF-8  
+ENV LANG zh_CN.UTF-8  
+ENV LANGUAGE zh_CN:zh  
+ENV LC_ALL zh_CN.UTF-8  
+
 WORKDIR /home/cts/jupyterhub/
 EXPOSE 8000
 EXPOSE 8888
